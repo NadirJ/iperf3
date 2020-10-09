@@ -7,11 +7,10 @@
 # docker inspect --format "{{ .NetworkSettings.IPAddress }}" iperf3-srv
 # docker run  -it --rm networkstatic/iperf3 -c <SERVER_IP>
 #
-FROM debian:latest
-MAINTAINER Brent Salisbury <brent.salisbury@gmail.com>
+FROM debian:buster-slim
 # install binary and remove cache
 RUN apt-get update \
-    && apt-get install -y iperf3 \
+    && apt-get install -y iperf3=3.6-2 \
     && rm -rf /var/lib/apt/lists/*
 
 # Expose the default iperf3 server port
